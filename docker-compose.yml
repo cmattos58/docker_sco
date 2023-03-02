@@ -1,0 +1,39 @@
+version: "2.0"
+services:
+  web:
+    container_name: php5.6
+    image: gotechnies/php-5.6-alpine
+    ports:
+       - "80:80"
+       - "443:443"
+    links:
+       - db
+       - phpmyadmin
+    volumes:
+      - ./html:/var/www/html
+    restart: always
+  db:
+    image: mysql:5.6
+    container_name: database
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: mysql_server
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: tce!@123
+    restart: always
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+     - PMA_ARBITRARY=1
+    restart: always
+    links:
+     - db
+    ports:
+     - 8080:80
+    volumes:
+     - /sessions
