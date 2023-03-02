@@ -2,7 +2,7 @@ version: "2.0"
 services:
   web:
     container_name: php5.6
-    image: gotechnies/php-5.6-alpine
+    image: cmattos58/php-5.6-alpine
     ports:
        - "80:80"
        - "443:443"
@@ -13,7 +13,7 @@ services:
       - ./html:/var/www/html
     restart: always
   db:
-    image: mysql:5.6
+    image: cmattos58/mysql:5.6
     container_name: database
     ports:
       - 3306:3306
