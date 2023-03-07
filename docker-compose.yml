@@ -2,7 +2,7 @@ version: "2.0"
 services:
   web:
     container_name: php5.6
-    image: cmattos58/php-5.6-alpine
+    image: cmattos58/alpine-php:latest
     ports:
        - "80:80"
        - "443:443"
